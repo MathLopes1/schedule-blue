@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.blue.scheduleblue.dto.ScheduleDTO;
+import com.blue.scheduleblue.dto.PersonDTO;
 import com.blue.scheduleblue.repositories.ScheduleRepository;
-import com.blue.scheduleblue.schema.ScheduleSchema;
+import com.blue.scheduleblue.schema.PersonSchema;
 
 @Service
 public class ScheduleService {
@@ -15,21 +15,21 @@ public class ScheduleService {
 	@Autowired
 	private ScheduleRepository repo;
 
-	public ScheduleSchema created(ScheduleSchema schedule) {
+	public PersonSchema created(PersonSchema schedule) {
 		return repo.insert(schedule);
 	}
 
-	public List<ScheduleSchema> findAll() {
+	public List<PersonSchema> findAll() {
 		return repo.findAll();
 	}
 
-	public ScheduleSchema fromDTO(ScheduleDTO scheduleDto) {
-		return new ScheduleSchema
+	public PersonSchema fromDTO(PersonDTO personDTO) {
+		return new PersonSchema
             (
-             scheduleDto.getId(),
-             scheduleDto.getName(),
-             scheduleDto.getAddress(),
-             scheduleDto.getphoneNumber()
+             personDTO.getId(),
+             personDTO.getName(),
+             personDTO.getAddress(),
+             personDTO.getphoneNumber()
             );
 	}
 }

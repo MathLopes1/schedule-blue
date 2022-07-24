@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.blue.scheduleblue.dto.ScheduleDTO;
-import com.blue.scheduleblue.schema.ScheduleSchema;
+import com.blue.scheduleblue.dto.PersonDTO;
+import com.blue.scheduleblue.schema.PersonSchema;
 import com.blue.scheduleblue.services.ScheduleService;
 
 @RestController
@@ -25,20 +25,20 @@ public class ScheduleController {
 	private ScheduleService service;
 	
     @PostMapping("/schedule")
-	public ResponseEntity<ScheduleDTO> created(@RequestBody ScheduleDTO scheduleDTO) {
-		ScheduleSchema schedule = service.fromDTO(scheduleDTO);
-        schedule = service.created(schedule);
+	public ResponseEntity<PersonDTO> created(@RequestBody PersonDTO personDTO) {
+		PersonSchema person = service.fromDTO(personDTO);
+        person = service.created(person);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-            .buildAndExpand(schedule.getId()).toUri();
+            .buildAndExpand(person.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 
     @GetMapping("/schedule")
-	public ResponseEntity<List<ScheduleDTO>> findAll() {
+	public ResponseEntity<List<PersonDTO>> findAll() {
 		
-		List<ScheduleSchema> list = service.findAll();
-		List<ScheduleDTO> listDto = list.stream()
-            .map(x -> new ScheduleDTO(x)).collect(Collectors.toList());
+		List<PersonSchema> list = service.findAll();
+		List<PersonDTO> listDto = list.stream()
+            .map(x -> new PersonDTO(x)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listDto);
 	}
 }
