@@ -41,6 +41,11 @@ public class ScheduleService {
 		return person.orElseThrow(() -> new Error("object not found"));
 	}
 
+	public void delete(String id) {
+		this.findById(id);
+		repo.deleteById(id);
+	}
+
 	public PersonSchema fromDTO(PersonDTO personDTO) {
 		return new PersonSchema
             (
