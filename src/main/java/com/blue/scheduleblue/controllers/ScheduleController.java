@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,7 +30,7 @@ public class ScheduleController {
 	private ScheduleService service;
 	
     @PostMapping("/schedule")
-	public ResponseEntity<PersonDTO> created(@RequestBody PersonDTO personDTO) {
+	public ResponseEntity<PersonDTO> created(@Valid @RequestBody PersonDTO personDTO) {
 		PersonSchema person = service.fromDTO(personDTO);
         person = service.created(person);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")

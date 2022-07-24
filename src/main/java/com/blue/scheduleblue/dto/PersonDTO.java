@@ -2,14 +2,26 @@ package com.blue.scheduleblue.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 import com.blue.scheduleblue.schema.PersonSchema;
 
 public class PersonDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 	
 	private String id;
+
+	@NotEmpty(message = "Nome não pode ser vázio")
 	private String name;
-	private String address;
+
+	@NotEmpty(message = "Email não pode ser vázio")
+	@Email(message = "Digite um email válido")
+	private String emailAddress;
+
+	@NotEmpty()
+	@Size(min = 11, max = 11, message = "Digit (00) 00000-0000")
 	private String phoneNumber;
 	
 	public PersonDTO() {
@@ -18,7 +30,7 @@ public class PersonDTO implements Serializable {
 	public PersonDTO(PersonSchema obj) {
 		this.id = obj.getId();
 		this.name = obj.getName();
-		this.address = obj.getAddress();
+		this.emailAddress = obj.getEmailAddress();
         this.phoneNumber = obj.getphoneNumber();
 	}
 
@@ -38,12 +50,12 @@ public class PersonDTO implements Serializable {
 		this.name = name;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getEmailAddress() {
+		return emailAddress;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
 	}
 
     public String getphoneNumber() {

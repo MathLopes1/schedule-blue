@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.blue.scheduleblue.dto.PersonDTO;
 import com.blue.scheduleblue.repositories.ScheduleRepository;
 import com.blue.scheduleblue.schema.PersonSchema;
+import com.blue.scheduleblue.services.exception.ObjectNotFoundException;
 
 @Service
 public class ScheduleService {
@@ -28,7 +29,7 @@ public class ScheduleService {
 
 	private void updateData(PersonSchema updatedPerson, PersonSchema person) {
 		updatedPerson.setName(person.getName());
-		updatedPerson.setAddress(person.getAddress());
+		updatedPerson.setEmailAddress(person.getEmailAddress());
 		updatedPerson.setphoneNumber(person.getphoneNumber());;
 	}
 
@@ -38,7 +39,7 @@ public class ScheduleService {
 
 	public PersonSchema findById(String id) {
 		Optional<PersonSchema> person = repo.findById(id);
-		return person.orElseThrow(() -> new Error("object not found"));
+		return person.orElseThrow(() -> new ObjectNotFoundException("object not found"));
 	}
 
 	public void delete(String id) {
@@ -51,7 +52,7 @@ public class ScheduleService {
             (
              personDTO.getId(),
              personDTO.getName(),
-             personDTO.getAddress(),
+             personDTO.getEmailAddress(),
              personDTO.getphoneNumber()
             );
 	}

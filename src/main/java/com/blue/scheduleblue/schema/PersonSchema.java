@@ -3,6 +3,10 @@ package com.blue.scheduleblue.schema;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,18 +16,26 @@ public class PersonSchema implements Serializable {
 
     @Id
 	private String id;
+
+	@NotEmpty(message = "Nome não pode ser vázio")
 	private String name;
-	private String address;
+
+	@NotEmpty(message = "Email não pode ser vázio")
+	@Email(message = "Digite um email válido")
+	private String emailAddress;
+
+	@NotEmpty()
+	@Size(min = 11, max = 11, message = "Digit (00) 00000-0000")
 	private String phoneNumber;
 	
 	public PersonSchema() {
 	}
 
-	public PersonSchema(String id, String name, String address, String phoneNumber) {
+	public PersonSchema(String id, String name, String emailAddress, String phoneNumber) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.address = address;
+		this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber; 
 	}
 
@@ -43,12 +55,12 @@ public class PersonSchema implements Serializable {
 		this.name = name;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getEmailAddress() {
+		return emailAddress;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
 	}
 
     public String getphoneNumber() {
