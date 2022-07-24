@@ -1,6 +1,7 @@
 package com.blue.scheduleblue.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,25 @@ public class ScheduleService {
 		return repo.insert(schedule);
 	}
 
+	public PersonSchema updated(PersonSchema person) {
+		PersonSchema updatedPerson = findById(person.getId());
+		updateData(updatedPerson, person);
+		return repo.save(updatedPerson);
+	}
+
+	private void updateData(PersonSchema updatedPerson, PersonSchema person) {
+		updatedPerson.setName(person.getName());
+		updatedPerson.setAddress(person.getAddress());
+		updatedPerson.setphoneNumber(person.getphoneNumber());;
+	}
+
 	public List<PersonSchema> findAll() {
 		return repo.findAll();
+	}
+
+	public PersonSchema findById(String id) {
+		Optional<PersonSchema> person = repo.findById(id);
+		return person.orElseThrow(() -> new Error("object not found"));
 	}
 
 	public PersonSchema fromDTO(PersonDTO personDTO) {
