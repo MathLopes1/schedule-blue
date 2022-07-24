@@ -51,4 +51,10 @@ public class ScheduleController {
             .map(x -> new PersonDTO(x)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listDto);
 	}
+
+	@GetMapping("person/{id}")
+	public ResponseEntity<PersonDTO> findById(@PathVariable String id) {
+		PersonSchema person = service.findById(id);
+		return ResponseEntity.ok().body(new PersonDTO(person));
+	}
 }
