@@ -1,5 +1,7 @@
 package com.blue.scheduleblue.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,10 @@ public class ScheduleService {
 
 	public ScheduleSchema created(ScheduleSchema schedule) {
 		return repo.insert(schedule);
+	}
+
+	public List<ScheduleSchema> findAll() {
+		return repo.findAll();
 	}
 
 	public ScheduleSchema fromDTO(ScheduleDTO scheduleDto) {
