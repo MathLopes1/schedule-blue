@@ -10,6 +10,6 @@ services:
     networks:
       - blue
     environment:
-      MONGOLAB_URI: ${MONGO_URI:-}
+      MONGOLAB_URI: mongodb://localhost:27017/schedule-blue 
     ports:
       - "27017:27017"
