@@ -26,10 +26,10 @@ public class ScheduleController {
 	
     @PostMapping("/schedule")
 	public ResponseEntity<PersonDTO> created(@RequestBody PersonDTO personDTO) {
-		PersonSchema schedule = service.fromDTO(personDTO);
-        schedule = service.created(schedule);
+		PersonSchema person = service.fromDTO(personDTO);
+        person = service.created(person);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-            .buildAndExpand(schedule.getId()).toUri();
+            .buildAndExpand(person.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 
