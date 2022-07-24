@@ -1,0 +1,15 @@
+version: '3.4'
+
+networks:
+  blue:
+    driver: bridge
+
+services:
+  mongo:
+    image: mongo:4.2
+    networks:
+      - blue
+    environment:
+      MONGOLAB_URI: ${MONGO_URI:-}
+    ports:
+      - "27017:27017"
