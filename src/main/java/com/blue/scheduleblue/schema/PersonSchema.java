@@ -7,7 +7,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="Schedule")
-public class ScheduleSchema implements Serializable {
+public class PersonSchema implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -16,10 +16,10 @@ public class ScheduleSchema implements Serializable {
 	private String address;
 	private String phoneNumber;
 	
-	public ScheduleSchema() {
+	public PersonSchema() {
 	}
 
-	public ScheduleSchema(String id, String name, String address, String phoneNumber) {
+	public PersonSchema(String id, String name, String address, String phoneNumber) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -72,7 +72,7 @@ public class ScheduleSchema implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ScheduleSchema other = (ScheduleSchema) obj;
+			PersonSchema other = (PersonSchema) obj;
 		return Objects.equals(id, other.id);
 	}
 }

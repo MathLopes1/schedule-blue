@@ -2,9 +2,9 @@ package com.blue.scheduleblue.dto;
 
 import java.io.Serializable;
 
-import com.blue.scheduleblue.schema.ScheduleSchema;
+import com.blue.scheduleblue.schema.PersonSchema;
 
-public class ScheduleDTO implements Serializable {
+public class PersonDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 	
 	private String id;
@@ -12,10 +12,10 @@ public class ScheduleDTO implements Serializable {
 	private String address;
 	private String phoneNumber;
 	
-	public ScheduleDTO() {
+	public PersonDTO() {
 	}
 	
-	public ScheduleDTO(ScheduleSchema obj) {
+	public PersonDTO(PersonSchema obj) {
 		this.id = obj.getId();
 		this.name = obj.getName();
 		this.address = obj.getAddress();
