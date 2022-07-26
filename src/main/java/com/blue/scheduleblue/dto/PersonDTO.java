@@ -21,7 +21,7 @@ public class PersonDTO implements Serializable {
 	private String emailAddress;
 
 	@NotEmpty()
-	@Size(min = 11, max = 11, message = "Digit (00) 00000-0000")
+	@Size(min = 15, max = 15, message = "Digit (00) 00000-0000")
 	private String phoneNumber;
 	
 	public PersonDTO() {
