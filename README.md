@@ -1,4 +1,4 @@
-# CHALLENGE BLUE SCHEDULE[<img align="right" src="https://img.shields.io/badge/release-v1.0.0-green">](https://github.com/br3nds0n/blue-schedule-backend/releases)
+# CHALLENGE BLUE SCHEDULE[<img align="right" src="https://img.shields.io/badge/release-v1.0.0-green">]()
 
 
 <h1 align="center">
@@ -38,8 +38,6 @@ git clone https://github.com/MathLopes1/schedule-blue.git
 
 # Acesse a pasta do projeto 
 cd schedule-blue
-
-# crie um arquivo .env seguindo o modelo do arquivo .env.exemplo e preencha os campos.
 
 # Instale as dependências
 mvn install
